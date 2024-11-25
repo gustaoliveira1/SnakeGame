@@ -1,0 +1,8 @@
+# packages
+.venv
+
+# cpython
+**/__pycache__/
+
+# database
+*.sqlite3
