@@ -10,6 +10,9 @@ MENU_OPTIONS = (
     "EXIT",
 )
 
+# database
+DATABASE_PATH = "db.sqlite3"
+
 # colors
 BLACK_COLOR = (0, 0, 0)
 WHITE_COLOR = (255, 255, 255)

@@ -2,6 +2,7 @@ import sys
 import pygame
 from lib.constants import BLACK_COLOR, GRAY_COLOR, MENU_OPTIONS, WINDOW_HEIGHT, WINDOW_WIDTH, WHITE_COLOR
 from lib.game import Game
+from lib.score import Score
 
 
 class Menu:
@@ -12,6 +13,9 @@ class Menu:
 
     def run(self) -> None:
         while True:
+            score = Score(self.window)
+            data = None
+
             self.window.fill(BLACK_COLOR)
             self.text(64, "Snake Game", WHITE_COLOR, (int(WINDOW_WIDTH/2), 100))
 
@@ -33,12 +37,15 @@ class Menu:
                         match self.option:
                             case 0:
                                 game = Game(self.window)
-                                game.run()
+                                data = game.run()
                             case 1:
-                                pass
+                                score.show()
                             case _:
                                 pygame.quit()
                                 sys.exit()
+
+                if data:
+                    score.save(data)
 
             pygame.display.update()
 

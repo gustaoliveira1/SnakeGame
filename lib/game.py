@@ -33,6 +33,8 @@ class Game:
 
             EntityMediator.verify_collision(self.snake, self.berry)
 
+        return (self.snake.size -1) * 10
+
     def text(self, size: int, text: str, color: tuple, position: tuple) -> None:
         font = pygame.font.Font(size=size)
         surface = font.render(text, True, color)
