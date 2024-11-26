@@ -1,3 +1,5 @@
+import pygame
+
 # config
 GAME_TICK = 16
 WINDOW_WIDTH = 720
@@ -9,6 +11,19 @@ MENU_OPTIONS = (
     "SCORE",
     "EXIT",
 )
+
+DIRECTIONS = {
+    # Teclas WASD
+    pygame.K_w: (0, -1),
+    pygame.K_s: (0, 1),
+    pygame.K_a: (-1, 0),
+    pygame.K_d: (1, 0),
+    # Teclas das setas
+    pygame.K_UP: (0, -1),
+    pygame.K_DOWN: (0, 1),
+    pygame.K_LEFT: (-1, 0),
+    pygame.K_RIGHT: (1, 0),
+}
 
 # database
 DATABASE_PATH = "db.sqlite3"

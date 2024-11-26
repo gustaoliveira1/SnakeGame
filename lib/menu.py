@@ -57,9 +57,9 @@ class Menu:
 
     def handle_menu_navigation(self, key, max_options) -> None:
         match key:
-            case pygame.K_w:
+            case pygame.K_w | pygame.K_UP:
                 self.option = max(self.option -1, 0)
-            case pygame.K_s:
+            case pygame.K_s | pygame.K_DOWN:
                 self.option = min(self.option +1, max_options -1)
 
         return self.option

@@ -1,7 +1,7 @@
 import pygame
 from pygame import Surface
 from lib.entity import Entity
-from lib.constants import WHITE_COLOR, SQUARE_SIZE
+from lib.constants import DIRECTIONS, WHITE_COLOR, SQUARE_SIZE
 
 
 class Snake(Entity):
@@ -11,16 +11,16 @@ class Snake(Entity):
         self.size = 1
         self.pixels: list[list[int]] = [position.copy()]
         self.collided = False
+        self.direction = (0, -1)
 
     def move(self, key) -> None:
-        if key == pygame.K_w:
-            self.position[1] -= SQUARE_SIZE
-        elif key == pygame.K_s:
-            self.position[1] += SQUARE_SIZE
-        elif key == pygame.K_a:
-            self.position[0] -= SQUARE_SIZE
-        elif key == pygame.K_d:
-            self.position[0] += SQUARE_SIZE
+        if key in DIRECTIONS:
+            new_direction = DIRECTIONS[key]
+            if (self.direction[0] + new_direction[0], self.direction[1] + new_direction[1]) != (0, 0):
+                self.direction = new_direction
+
+        self.position[0] += self.direction[0] * SQUARE_SIZE
+        self.position[1] += self.direction[1] * SQUARE_SIZE
 
         self.pixels.append(self.position.copy())
 
