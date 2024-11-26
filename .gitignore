@@ -6,3 +6,7 @@
 
 # database
 *.sqlite3
+
+# build
+build
+dist
