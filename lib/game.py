@@ -1,15 +1,14 @@
-import sys
 import pygame
+from pygame import Surface
 from lib.berry import Berry
 from lib.snake import Snake
 from lib.entity_mediator import EntityMediator
-from lib.constants import BLACK_COLOR, WINDOW_HEIGHT, WINDOW_WIDTH, GAME_TICK, SNAKE_INITIAL_POSITION
+from lib.constants import BLACK_COLOR, GAME_TICK, SNAKE_INITIAL_POSITION, WHITE_COLOR
 
 
 class Game:
-    def __init__(self) -> None:
-        pygame.init()
-        self.window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+    def __init__(self, window: Surface) -> None:
+        self.window = window
         self.snake = Snake(SNAKE_INITIAL_POSITION)
         self.berry = Berry(EntityMediator.generate_berry_position())
 
@@ -20,12 +19,9 @@ class Game:
         while not self.snake.collided:
             clock.tick(GAME_TICK)
             self.window.fill(BLACK_COLOR)
+            self.text(32, f"Score: {(self.snake.size - 1) * 10}", WHITE_COLOR, (10, 10))
 
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-
                 if event.type == pygame.KEYDOWN:
                     last_pressed_key = event.key
 
@@ -36,3 +32,9 @@ class Game:
             pygame.display.update()
 
             EntityMediator.verify_collision(self.snake, self.berry)
+
+    def text(self, size: int, text: str, color: tuple, position: tuple) -> None:
+        font = pygame.font.Font(size=size)
+        surface = font.render(text, True, color)
+        rect = surface.get_rect(left=position[0], top=position[1])
+        self.window.blit(surface, rect)

@@ -1,6 +1,6 @@
-from lib.game import Game
+from lib.menu import Menu
 
 
 if __name__ == "__main__":
-    game = Game()
-    game.run()
+    menu = Menu()
+    menu.run()
