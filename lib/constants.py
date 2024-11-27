@@ -1,4 +1,11 @@
+import sys
 import pygame
+import os
+
+if hasattr(sys, '_MEIPASS'):
+    BASE_PATH = sys._MEIPASS
+else:
+    BASE_PATH = os.path.abspath(".")
 
 # config
 GAME_TICK = 16
@@ -25,6 +32,13 @@ DIRECTIONS = {
     pygame.K_RIGHT: (1, 0),
 }
 
+BACKGROUD_PATH = os.path.join(BASE_PATH, "assets", "images", "background.webp")
+
+BACKGROUD = pygame.transform.scale(
+    pygame.image.load(BACKGROUD_PATH), 
+    (WINDOW_WIDTH, WINDOW_HEIGHT),
+)
+
 # database
 DATABASE_PATH = "db.sqlite3"
 
@@ -33,3 +47,4 @@ BLACK_COLOR = (0, 0, 0)
 WHITE_COLOR = (255, 255, 255)
 RED_COLOR = (255, 0, 0)
 GRAY_COLOR = (200, 200, 200)
+PYTHON_YELLOW_COLOR = (244, 214, 85)

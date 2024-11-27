@@ -3,7 +3,7 @@ from pygame import Surface
 from lib.berry import Berry
 from lib.snake import Snake
 from lib.entity_mediator import EntityMediator
-from lib.constants import BLACK_COLOR, GAME_TICK, SNAKE_INITIAL_POSITION, WHITE_COLOR
+from lib.constants import BACKGROUD, GAME_TICK, SNAKE_INITIAL_POSITION, WHITE_COLOR
 
 
 class Game:
@@ -18,7 +18,7 @@ class Game:
 
         while not self.snake.collided:
             clock.tick(GAME_TICK)
-            self.window.fill(BLACK_COLOR)
+            self.window.blit(BACKGROUD, (0, 0))
             self.text(32, f"Score: {(self.snake.size - 1) * 10}", WHITE_COLOR, (10, 10))
 
             for event in pygame.event.get():

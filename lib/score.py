@@ -1,7 +1,7 @@
 import sys
 import pygame
 from pygame import Surface
-from lib.constants import BLACK_COLOR, RED_COLOR, WHITE_COLOR, WINDOW_HEIGHT, WINDOW_WIDTH
+from lib.constants import RED_COLOR, WHITE_COLOR, WINDOW_HEIGHT, WINDOW_WIDTH, BACKGROUD
 from lib.database_proxy import DatabaseProxy
 
 
@@ -14,7 +14,7 @@ class Score:
         db = DatabaseProxy()
 
         while True:
-            self.window.fill(BLACK_COLOR)
+            self.window.blit(BACKGROUD, (0, 0))
             self.text(64, "YOU LOST!", RED_COLOR, (WINDOW_WIDTH/2, 100))
             self.text(54, "Enter player name:", WHITE_COLOR, (WINDOW_WIDTH/2, 150))
 
@@ -40,7 +40,7 @@ class Score:
         db = DatabaseProxy()
         scores = db.get()
 
-        self.window.fill(BLACK_COLOR)
+        self.window.blit(BACKGROUD, (0, 0))
 
         self.text(54, "TOP 10 SCORE", WHITE_COLOR, (WINDOW_WIDTH / 2, 50))
         self.text(24, f"{'NAME':<15}{'SCORE':<10}{'DATE':<15}", WHITE_COLOR, (WINDOW_WIDTH / 2, 100))

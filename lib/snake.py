@@ -1,7 +1,8 @@
+import random
 import pygame
 from pygame import Surface
 from lib.entity import Entity
-from lib.constants import DIRECTIONS, WHITE_COLOR, SQUARE_SIZE
+from lib.constants import DIRECTIONS, SQUARE_SIZE, PYTHON_YELLOW_COLOR
 
 
 class Snake(Entity):
@@ -30,4 +31,4 @@ class Snake(Entity):
     def render(self, window: Surface) -> None:
         for pixel in self.pixels:
             x, y = pixel
-            pygame.draw.rect(window, WHITE_COLOR, (x, y, SQUARE_SIZE, SQUARE_SIZE))
+            pygame.draw.rect(window, PYTHON_YELLOW_COLOR, (x, y, SQUARE_SIZE, SQUARE_SIZE))
